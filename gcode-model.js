@@ -97,12 +97,22 @@ function createObjectFromGCode(gcode) {
       //Line number
     },
 
+    G20: function(args) {
+      // G20: Set Units to Inches
+      // Example: G20
+      // Units from now on are in millimeters. (This is the RepRap default.)
+
+      // No-op: So long as G20 is not supported.
+      //define a unit coefficient to 2.54
+    },
+
     G21: function(args) {
       // G21: Set Units to Millimeters
       // Example: G21
       // Units from now on are in millimeters. (This is the RepRap default.)
 
       // No-op: So long as G20 is not supported.
+      //define a unit coefficient to 1
     },
 
     G80: function(args) {
@@ -116,6 +126,22 @@ function createObjectFromGCode(gcode) {
       // origin of the machine. (This is the RepRap default.)
 
       relative = false;
+    },
+
+    G40: function(args) {
+    	//CUTTER RADIUS COMPENSATION
+    },
+
+    G41: function(args) {
+    	//CUTTER RADIUS COMPENSATION
+    },
+
+    G42: function(args) {
+    	//CUTTER RADIUS COMPENSATION
+    },
+
+    G54: function(args) {
+    	//SELECT WORK OFFSET COORDINATE SYSTEM
     },
 
     G91: function(args) {
