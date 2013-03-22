@@ -97,6 +97,21 @@ function createObjectFromGCode(gcode) {
       //Line number
     },
 
+    G17: function(args) {
+      // G17, G18 AND G19 - PLANE SELECTION
+      // Program G17 to select the XY-plane, G18 to select the XZ-plane or G19 to select the YZ-plane.
+    },
+
+    G18: function(args) {
+      // G17, G18 AND G19 - PLANE SELECTION
+      // Program G17 to select the XY-plane, G18 to select the XZ-plane or G19 to select the YZ-plane.
+    },
+
+    G19: function(args) {
+      // G17, G18 AND G19 - PLANE SELECTION
+      // Program G17 to select the XY-plane, G18 to select the XZ-plane or G19 to select the YZ-plane.
+    },
+
     G20: function(args) {
       // G20: Set Units to Inches
       // Example: G20
