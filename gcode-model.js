@@ -105,6 +105,10 @@ function createObjectFromGCode(gcode) {
       // No-op: So long as G20 is not supported.
     },
 
+    G80: function(args) {
+    	//CANCEL MODAL MOTION
+    },
+
     G90: function(args) {
       // G90: Set to Absolute Positioning
       // Example: G90
