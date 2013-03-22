@@ -18,4 +18,6 @@ To learn more, read my blog post:
 
 Open sourced under MIT license.
 
+* http://www.tormach.com/g_code_table.html
+
 -Joe Walnes
