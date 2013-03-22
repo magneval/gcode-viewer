@@ -125,7 +125,33 @@ function createObjectFromGCode(gcode) {
 		addSegment(lastLine, newLine);
       lastLine = newLine;
     },
-    G01: G1,
+    
+    G01: function(args, line) {
+      // Example: G1 Z1.0 F3000
+      //          G1 X99.9948 Y80.0611 Z15.0 F1500.0 E981.64869
+      //          G1 E104.25841 F1800.0
+      // Go in a straight line from the current (X, Y) point
+      // to the point (90.6, 13.8), extruding material as the move
+      // happens from the current extruded length to a length of
+      // 22.4 mm.
+
+      var newLine = {
+        x: args.x !== undefined ? absolute(lastLine.x, args.x) : lastLine.x,
+        y: args.y !== undefined ? absolute(lastLine.y, args.y) : lastLine.y,
+        z: args.z !== undefined ? absolute(lastLine.z, args.z) : lastLine.z,
+        e: args.e !== undefined ? absolute(lastLine.e, args.e) : lastLine.e,
+        f: args.f !== undefined ? absolute(lastLine.f, args.f) : lastLine.f,
+      };
+      /* layer change detection is or made by watching Z, it's made by
+         watching when we extrude at a new Z position */
+		if (delta(lastLine.e, newLine.e) > 0) {
+			newLine.extruding = delta(lastLine.e, newLine.e) > 0;
+			if (layer == undefined || newLine.z != layer.z)
+				newLayer(newLine);
+		}
+		addSegment(lastLine, newLine);
+      lastLine = newLine;
+    },
 
     N: function(args) {
       //Line number
