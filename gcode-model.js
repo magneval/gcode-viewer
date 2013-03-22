@@ -288,6 +288,10 @@ function createObjectFromGCode(gcode) {
     	//G93, G94 AND G95 - SET PATH CONTROL MODE
     },
 
+    M30: function(args) {
+      // M0, M1, M2 AND M30 - PROGRAM STOPPING AND ENDING
+    },
+
     M03: function(args) {
       // M3, M4 AND M5 - SPINDLE CONTROL
     },
