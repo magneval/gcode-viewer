@@ -155,6 +155,18 @@ function createObjectFromGCode(gcode) {
     	//CUTTER RADIUS COMPENSATION
     },
 
+    G43: function(args) {
+    	//G43, G44 AND G49 - TOOL LENGTH OFFSETS
+    },
+
+    G44: function(args) {
+    	//G43, G44 AND G49 - TOOL LENGTH OFFSETS
+    },
+
+    G49: function(args) {
+    	//G43, G44 AND G49 - TOOL LENGTH OFFSETS
+    },
+
     G50: function(args) {
     	//G50 AND G51 - SCALE FACTORS
 	/*
@@ -183,11 +195,11 @@ function createObjectFromGCode(gcode) {
     	//SELECT WORK OFFSET COORDINATE SYSTEM
     },
 
-    G51: function(args) {
+    G61: function(args) {
     	//G61 AND G64 - SET PATH CONTROL MODE
     },
 
-    G54: function(args) {
+    G64: function(args) {
     	//G61 AND G64 - SET PATH CONTROL MODE
     },
 
