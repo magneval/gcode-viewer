@@ -155,6 +155,30 @@ function createObjectFromGCode(gcode) {
     	//CUTTER RADIUS COMPENSATION
     },
 
+    G50: function(args) {
+    	//G50 AND G51 - SCALE FACTORS
+	/*
+	Details:
+	To define a scale factor which will be applied to an X, Y, Z, A, I & J word before it is used program: G51 X~ Y~ Z~ A~ where the X, Y, Z etc. words are the scale factors for the given axes. These values are, of course, never themselves scaled.
+
+	It is not permitted to use unequal scale factors to produce elliptical arcs with G2 or G3.
+
+	To reset the scale factors of all axes to 1.0 program: G50.
+	*/
+    },
+
+    G51: function(args) {
+    	//G50 AND G51 - SCALE FACTORS
+	/*
+	Details:
+	To define a scale factor which will be applied to an X, Y, Z, A, I & J word before it is used program: G51 X~ Y~ Z~ A~ where the X, Y, Z etc. words are the scale factors for the given axes. These values are, of course, never themselves scaled.
+
+	It is not permitted to use unequal scale factors to produce elliptical arcs with G2 or G3.
+
+	To reset the scale factors of all axes to 1.0 program: G50.
+	*/
+    },
+
     G54: function(args) {
     	//SELECT WORK OFFSET COORDINATE SYSTEM
     },
