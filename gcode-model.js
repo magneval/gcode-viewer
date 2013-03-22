@@ -125,6 +125,7 @@ function createObjectFromGCode(gcode) {
 		addSegment(lastLine, newLine);
       lastLine = newLine;
     },
+    G01: G1,
 
     N: function(args) {
       //Line number
