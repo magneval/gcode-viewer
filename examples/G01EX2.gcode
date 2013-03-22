@@ -35,20 +35,19 @@ M03 S1250
 G00 X1.0 Y1.0
 (inconnu)
 (Rapid over to X1,Y1)
-Z0.1
+G00 Z0.1
 (inconnu)
 (Rapid down to Z0.1)
 G01 Z-0.125 F5
 (inconnu)
 (Feed down to Z–0.125 at 5 ipm)
-X3 Y2 F10
+G01 X3 Y2 F10
 (inconnu)
 (Feed diagonally to X3,Y2 at 10 ipm)
-G00
-Z1.0
+G00 Z1.0
 (inconnu)
 (Rapid up to Z1)
-X0.0 Y0.0
+G00 X0.0 Y0.0
 (inconnu)
 (Rapid over to X0,Y0)
 M05 
