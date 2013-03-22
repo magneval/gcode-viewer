@@ -66,6 +66,39 @@ function createObjectFromGCode(gcode) {
 	}
 
   var parser = new GCodeParser({  	
+    G00: function(args, line) {
+	//G0 X~ Y~ Z~ A~
+	// Example: G1 Z1.0 F3000
+	//          G1 X99.9948 Y80.0611 Z15.0 F1500.0 E981.64869
+	//          G1 E104.25841 F1800.0
+	/*
+	Details:
+	(a) For rapid linear motion, program: G0 X~ Y~ Z~ A~ where all the axis words are optional, except that at least one must be used. The G00 is optional if the current motion mode is G0. This will produce coordinated linear motion to the destination point at the current traverse rate (or slower if the machine will not go that fast). It is expected that cutting will not take place when a G00 command is executing.
+	
+	(b) If G16 has been executed to set a Polar Origin then for rapid linear motion to a point described by a radius and angle G0 X~ Y~ can be used. X~ is the radius of the line from the G16 polar origin and Y~ is the angle in degrees measured with increasing values counterclockwise from the 3 o'clock direction (i.e., the conventional four quadrant conventions). Coordinates of the current point at the time of executing the G16 are the polar origin.
+	
+	If cutter radius compensation is active, the motion will differ from the above; see Cutter Compensation. If G53 is programmed on the same line, the motion will also differ.
+	
+	Absolute Coordinates. Depending on where the tool is located, there are two basic rules to follow for safety's sake: If the Z value represents a cutting move in the negative direction, the X and Y axes should be executed first. If the Z value represents a move in the positive direction, the X and Y axes should be executed last.      
+      */
+
+      var newLine = {
+        x: args.x !== undefined ? absolute(lastLine.x, args.x) : lastLine.x,
+        y: args.y !== undefined ? absolute(lastLine.y, args.y) : lastLine.y,
+        z: args.z !== undefined ? absolute(lastLine.z, args.z) : lastLine.z,
+        a: args.a !== undefined ? absolute(lastLine.a, args.a) : lastLine.a,
+      };
+      /* layer change detection is or made by watching Z, it's made by
+         watching when we extrude at a new Z position */
+		if (delta(lastLine.e, newLine.e) > 0) {
+			newLine.extruding = delta(lastLine.e, newLine.e) > 0;
+			if (layer == undefined || newLine.z != layer.z)
+				newLayer(newLine);
+		}
+		addSegment(lastLine, newLine);
+      lastLine = newLine;
+    },
+    
     G1: function(args, line) {
       // Example: G1 Z1.0 F3000
       //          G1 X99.9948 Y80.0611 Z15.0 F1500.0 E981.64869
