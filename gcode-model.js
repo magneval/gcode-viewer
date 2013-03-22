@@ -157,6 +157,19 @@ function createObjectFromGCode(gcode) {
 
     G43: function(args) {
     	//G43, G44 AND G49 - TOOL LENGTH OFFSETS
+    	/*
+    	Details:
+	To use a tool length offset, program: G43 H~, where the H number is the desired index in the tool table. It is expected that all entries in this table will be positive. The H number should be, but does not have to be, the same as the slot number of the tool currently in the spindle. The H number may be zero; an offset value of zero will be used. Omitting H has the same effect as a zero value.
+	G44 is provided for compatibility and is used if entries in the table give negative offsets.
+	It is an error if the H number is not an integer, is negative or is larger than the number of carousel slots.
+	To use no tool length offset, program: G49.
+	It is OK to program using the same offset already in use. It is also OK to program using no tool length offset if none is currently being used.
+	It is strongly advised to put the G43 command on the same line (block) as the T~ and the M06 which actually implements the change. If this is done then the control software anticipates the new offset during the time the operator has control for changing the tool. The operator can change the work Z offset safely if this condition is met.
+    	*/
+    	var newLine = lastLine;
+	newLine.h= args.h !== undefined ? args.h : newLine.h;
+	lastLine = newLine;
+
     },
 
     G44: function(args) {
