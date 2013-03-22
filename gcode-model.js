@@ -254,6 +254,30 @@ function createObjectFromGCode(gcode) {
     	//G93, G94 AND G95 - SET PATH CONTROL MODE
     },
 
+    M03: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
+    M3: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
+    M04: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
+    M4: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
+    M05: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
+    M5: function(args) {
+      // M3, M4 AND M5 - SPINDLE CONTROL
+    },
+
     M06: function(args) {
       // M6 - TOOL CHANGE
     },
