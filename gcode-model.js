@@ -183,6 +183,14 @@ function createObjectFromGCode(gcode) {
     	//SELECT WORK OFFSET COORDINATE SYSTEM
     },
 
+    G51: function(args) {
+    	//G61 AND G64 - SET PATH CONTROL MODE
+    },
+
+    G54: function(args) {
+    	//G61 AND G64 - SET PATH CONTROL MODE
+    },
+
     G91: function(args) {
       // G91: Set to Relative Positioning
       // Example: G91
