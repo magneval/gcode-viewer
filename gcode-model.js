@@ -93,6 +93,10 @@ function createObjectFromGCode(gcode) {
       lastLine = newLine;
     },
 
+    N: function(args) {
+      //Line number
+    },
+
     G21: function(args) {
       // G21: Set Units to Millimeters
       // Example: G21
