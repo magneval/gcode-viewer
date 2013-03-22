@@ -229,6 +229,14 @@ function createObjectFromGCode(gcode) {
     	//G93, G94 AND G95 - SET PATH CONTROL MODE
     },
 
+    M06: function(args) {
+      // M6 - TOOL CHANGE
+    },
+
+    M6: function(args) {
+      // M6 - TOOL CHANGE
+    },
+
     M82: function(args) {
       // M82: Set E codes absolute (default)
       // Descriped in Sprintrun source code.
